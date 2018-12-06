@@ -7,7 +7,17 @@
 `Vue skeleton electron` comes packaged with a variety of tools for creating a desktop app with vue skeleton as base. 
 The skeleton allows to get up and running in a matter of minutes.
 
-When built, the whole skeleton is only **~66kb** gzipped!
+## Installation
+
+```sh
+yarn
+```
+
+#### Start Webpack + Electron ap ( electron-reload)
+```sh
+yarn start
+```
+
 
 ## Features
 * [Electron](https://github.com/electron)
