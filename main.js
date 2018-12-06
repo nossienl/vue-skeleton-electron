@@ -7,13 +7,25 @@ const { app, BrowserWindow } = require('electron');
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
+let splashWindow;
 
 function createWindow() {
+  // Create the splash window.
+  splashWindow = new BrowserWindow({
+    width: 550,
+    height: 550,
+    resizable: true,
+    frame: false,
+    transparent: true,
+    hasShadow: false,
+  });
+
   // Create the browser window.
-  mainWindow = new BrowserWindow({ width: 1024, height: 768, resizable: true });
+  mainWindow = new BrowserWindow({ width: 1024, height: 768, resizable: true, show: false });
 
   // and load the index.html of the app.
-  mainWindow.loadFile(`./dist/index.html`);
+  mainWindow.loadURL(`file://${__dirname}/dist/index.html`);
+  splashWindow.loadURL(`file://${__dirname}/dist/index.html#splash`);
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
@@ -24,6 +36,14 @@ function createWindow() {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null;
+  });
+
+  // if main window is ready to show, then destroy the splash window and show up the main window
+  mainWindow.once('ready-to-show', () => {
+    setTimeout(() => {
+      splashWindow.hide();
+      mainWindow.show();
+    }, 5000);
   });
 }
 

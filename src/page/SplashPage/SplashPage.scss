@@ -1,0 +1,82 @@
+/* stylelint-disable-next-line block-no-empty */
+:local {
+  .splash-page {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  .loading {
+    position: relative;
+    height: 250px;
+    width: 250px;
+    box-sizing: border-box
+  }
+
+  .vue-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .line {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border-left-style: solid;
+    border-top-style: solid;
+    border-top-color: transparent;
+    border-left-width: 20px;
+    border-top-width: 20px;
+
+    &.line1 {
+    transform: rotate(120deg) rotateX(66deg) rotate(0deg);
+    animation: line-spin1 1s linear infinite;
+    border-left-color: #328690;
+    }
+
+    &.line2 {
+      transform: rotate(240deg) rotateX(66deg) rotate(0deg);
+      animation: line-spin2 1s linear infinite;
+      border-left-color: #00b981;
+    }
+
+    &.line3 {
+      transform: rotate(1turn) rotateX(66deg) rotate(0deg);
+      animation: line-spin3 1s linear infinite;
+      border-left-color: #445c6e;
+    }
+  }
+
+}
+:global {
+  @keyframes line-spin1 {
+    100% {
+      transform: rotateZ(120deg) rotateX(66deg) rotateZ(360deg);
+    }
+  }
+
+  @keyframes line-spin2 {
+    100% {
+      transform: rotateZ(240deg) rotateX(66deg) rotateZ(360deg);
+    }
+  }
+
+  @keyframes line-spin3 {
+    100% {
+      transform: rotateZ(360deg) rotateX(66deg) rotateZ(360deg);
+    }
+  }
+}
